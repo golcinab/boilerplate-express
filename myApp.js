@@ -57,11 +57,13 @@ app.get('/now',
         next();
     }, 
     function(req, res, next){
-        res.send({time: req.time});
+        res.json({time: req.time});
 });
 
 /** 9)  Get input from client - Route parameters */
-
+app.get('/:word/echo', function(req, res, next){
+    res.json({echo: req.params.word});
+});
 
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
