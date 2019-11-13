@@ -29,13 +29,18 @@ const staticPath = __dirname + '/public';
 app.use(express.static(staticPath));
 
 /** 5) serve JSON on a specific route */
+/** 6) Use the .env file to configure the app */
+require('dotenv').config();
+
 app.get('/json', function(req, res, next){
-    const message = 'Hello json';
+    let message = 'Hello json';
+
+    if( process.env.MESSAGE_STYLE === 'uppercase' ){
+        message = message.toUpperCase();
+    }
+    
     res.json({message: message});
 });
-
-/** 6) Use the .env file to configure the app */
- 
  
 /** 7) Root-level Middleware - A logger */
 //  place it before all the routes !
