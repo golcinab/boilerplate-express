@@ -29,7 +29,10 @@ const staticPath = __dirname + '/public';
 app.use(express.static(staticPath));
 
 /** 5) serve JSON on a specific route */
-
+app.get('/json', function(req, res, next){
+    const message = 'Hello json';
+    res.json({message: message});
+});
 
 /** 6) Use the .env file to configure the app */
  
