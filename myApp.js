@@ -1,4 +1,5 @@
 
+const bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 
@@ -11,8 +12,10 @@ app.use(function(req, res, next){
     next();
 });
 
+/** 11) Get ready for POST Requests - the `body-parser` */
+// place it before all the routes !
 // --> 11)  Mount the body-parser middleware  here
-
+app.use(bodyParser.urlencoded({extended: false}));
 
 /** 1) Meet the node console. */
 console.log("Hello World");
@@ -72,8 +75,7 @@ app.get('/name', function(req, res, next){
     res.json({name: name});
 });
   
-/** 11) Get ready for POST Requests - the `body-parser` */
-// place it before all the routes !
+
 
 
 /** 12) Get data form POST  */
