@@ -71,15 +71,15 @@ app.get('/:word/echo', function(req, res, next){
 /** 10) Get input from client - Query parameters */
 // /name?first=<firstname>&last=<lastname>
 app.get('/name', function(req, res, next){
-    const name = `${req.query.first} ${req.query.last}`;
-    res.json({name: name});
+    const fullname = `${req.query.first} ${req.query.last}`;
+    res.json({name: fullname});
 });
   
-
-
-
 /** 12) Get data form POST  */
-
+app.post('/name', function(req, res, next){
+    const fullname = `${req.body.first} ${req.body.last}`;
+    res.json({name: fullname});
+})
 
 
 // This would be part of the basic setup of an Express app
